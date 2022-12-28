@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  nginx:
+    container_name: u_nginx
+    image: nginx:alpine
+    restart: always
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 80:80
+      - 443:443
+    networks:
+      - upy-network
+
+networks:
+  upy-network:
+    driver: bridge
+    external: true
